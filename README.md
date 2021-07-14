@@ -1,7 +1,7 @@
 # Whisky Discography
 Project #2 - Group 6
 
-![epl_dreamteam_cover](image/image/WD3.PNG)
+![WD3](image/WD3.PNG)
 
 An in-depth analysis to the global whisky market using the Whisky Hunter API
 https://whiskyhunter.net/api/
