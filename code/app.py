@@ -12,8 +12,8 @@ app = Flask(__name__)
 # raw_data = Base.classes.raw_data
 
 # Route to render index.html template using data from Mongo
-@app.route("/data")
-def data():
+@app.route("/raw_data")
+def raw():
     filepath = os.path.dirname(os.path.abspath(__file__))
     engine = create_engine(f'sqlite:///{filepath}/whisky_dist.db')
     conn = engine.connect()
@@ -22,28 +22,56 @@ def data():
     # create connection SQLite db
     raw_data = pd.read_sql("SELECT * FROM raw_data", conn)
     print(raw_data)
-    # session = Session(engine)
-    # query = session.query(raw_data.name).all()
-    # session.close()
-    return raw_data.to_html()
-    # return jsonify(query)
+    return jsonify(raw_data.values.tolist())
 
-# @app.route("/index")
-# def index():
-#     # create connection SQLite db
-#     con = sql.connect("whisky_dist.db")
-#     # https://stackoverflow.com/questions/44009452/what-is-the-purpose-of-the-row-factory-method-of-an-sqlite3-connection-object
-#     con.row_factory = sql.Row
-    
-#     cur = con.cursor()
-#     cur.execute("select * from raw_data")
-    
-#     rows = cur.fetchall(); 
-#     return render_template("index.html",rows = rows)
+@app.route("/top_rated")
+def rated():
+    filepath = os.path.dirname(os.path.abspath(__file__))
+    engine = create_engine(f'sqlite:///{filepath}/whisky_dist.db')
+    conn = engine.connect()
+    Base = automap_base()
+    Base.prepare(engine, reflect=True)
+    # create connection SQLite db
+    raw_data = pd.read_sql("SELECT * FROM top_rated", conn)
+    print(raw_data)
+    return jsonify(raw_data.values.tolist())
 
-# @app.route('/group')
-# def group():
-#    return render_template('group.html')
+@app.route("/top_votes")
+def votes():
+    filepath = os.path.dirname(os.path.abspath(__file__))
+    engine = create_engine(f'sqlite:///{filepath}/whisky_dist.db')
+    conn = engine.connect()
+    Base = automap_base()
+    Base.prepare(engine, reflect=True)
+    # create connection SQLite db
+    raw_data = pd.read_sql("SELECT * FROM top_votes", conn)
+    print(raw_data)
+    return jsonify(raw_data.values.tolist())
+
+@app.route("/top_whiskies")
+def whiskies():
+    filepath = os.path.dirname(os.path.abspath(__file__))
+    engine = create_engine(f'sqlite:///{filepath}/whisky_dist.db')
+    conn = engine.connect()
+    Base = automap_base()
+    Base.prepare(engine, reflect=True)
+    # create connection SQLite db
+    raw_data = pd.read_sql("SELECT * FROM top_whiskies", conn)
+    print(raw_data)
+    return jsonify(raw_data.values.tolist())
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("about_us.html")
+
+@app.route("/data")
+def data():
+    return render_template("data.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
