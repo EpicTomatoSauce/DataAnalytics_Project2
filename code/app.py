@@ -12,6 +12,18 @@ app = Flask(__name__)
 # raw_data = Base.classes.raw_data
 
 # Route to render index.html template using data from Mongo
+@app.route("/raw_data_list")
+def raw_list():
+    filepath = os.path.dirname(os.path.abspath(__file__))
+    engine = create_engine(f'sqlite:///{filepath}/whisky_dist.db')
+    conn = engine.connect()
+    Base = automap_base()
+    Base.prepare(engine, reflect=True)
+    # create connection SQLite db
+    raw_data_list = pd.read_sql("SELECT * FROM raw_data", conn)
+    print(raw_data_list)
+    return jsonify(raw_data_list.values.tolist())
+
 @app.route("/raw_data")
 def raw():
     filepath = os.path.dirname(os.path.abspath(__file__))
@@ -22,7 +34,7 @@ def raw():
     # create connection SQLite db
     raw_data = pd.read_sql("SELECT * FROM raw_data", conn)
     print(raw_data)
-    return jsonify(raw_data.values.tolist())
+    return jsonify(raw_data.to_dict(orient="records"))
 
 @app.route("/top_rated")
 def rated():
@@ -34,7 +46,7 @@ def rated():
     # create connection SQLite db
     raw_data = pd.read_sql("SELECT * FROM top_rated", conn)
     print(raw_data)
-    return jsonify(raw_data.values.tolist())
+    return jsonify(raw_data.values.to_dict(orient="records"))
 
 @app.route("/top_votes")
 def votes():
@@ -46,7 +58,7 @@ def votes():
     # create connection SQLite db
     raw_data = pd.read_sql("SELECT * FROM top_votes", conn)
     print(raw_data)
-    return jsonify(raw_data.values.tolist())
+    return jsonify(raw_data.values.to_dict(orient="records"))
 
 @app.route("/top_whiskies")
 def whiskies():
@@ -58,7 +70,7 @@ def whiskies():
     # create connection SQLite db
     raw_data = pd.read_sql("SELECT * FROM top_whiskies", conn)
     print(raw_data)
-    return jsonify(raw_data.values.tolist())
+    return jsonify(raw_data.values.to_dict(orient="records"))
 
 @app.route("/")
 def index():
