@@ -41,16 +41,23 @@ loadData()
 function init() {
     var dropdown = d3.select('#selDataset');
     d3.json('/raw_data').then((data) => {
-        var sampleCountry = data[0].Country;
-        console.log(sampleCountry)
+        data.forEach((country) => {
+            dropdown.append('option').text(country).property('value', country.Country);
+            // console.log(country.Country);
         })
+        var sampleCountry = data[0].Country;
+        // console.log(sampleCountry);
+        dataretrieval(sampleCountry);
+    })
 }
 
 function dataretrieval(sampleCountry) {
     d3.json('/raw_data').then((data) => {
-        var country_sample = data.Country.filter((val) => val.Country == sampleCountry);
-        console.log(data);
-        console.log(country_sample);
+        var displayCountry = Object.values(sampleCountry)[0].filter((ctry) => ctry.Country === sampleCountry);
+        console.log(displayCountry);
+        // data.forEach((country) => {
+        //     var displayCountry = Object.values(country).filter((ctry) => ctry.Country === sampleCountry);
+        // })
     })
 }
 init();
