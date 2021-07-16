@@ -1,3 +1,4 @@
+let _ = window._;
 // Create a function to build and generate plots
 // ----------------------------------------------
 function loadData() {
@@ -39,12 +40,14 @@ loadData()
 // }
 
 function init() {
+    // d3.select #selDataset in HTML then iterate through data and append Country to the dropdown.
     var dropdown = d3.select('#selDataset');
     d3.json('/raw_data').then((data) => {
         data.forEach((country) => {
             dropdown.append('option').text(country).property('value', country.Country);
             // console.log(country.Country);
         })
+        // For the initialisation demographic table, use index 11 which is Australia. Not too few / many data points.
         var sampleCountry = data[11].Country;
         console.log(sampleCountry);
         buildList(sampleCountry);
@@ -53,20 +56,12 @@ function init() {
 
 function buildList(sampleCountry) {
     d3.json('/raw_data').then((data) => {
+        // empty array to store each dictionary which is matched by the if statement below
         var list_distilleries = [];
         data.forEach((distillery) => {
             if (distillery.Country === sampleCountry) {
+                // append to array
                 list_distilleries.push(distillery);
-                // var distillery_array = distillery
-                // console.log(distillery_array);
-                // var dist_names = distillery.Name;
-                // var dist_avg_rating = distillery.avg_rating;
-                // var dist_votes = distillery.num_votes;
-                // var dist_whiskies = distillery.num_whiskies;
-                // console.log(dist_names);
-                // console.log(dist_avg_rating);
-                // console.log(dist_votes);
-                // console.log(dist_whiskies);
                 }
         })
         // successfully appended each dictionary to the list_distilleries
@@ -76,11 +71,48 @@ function buildList(sampleCountry) {
 }
 
 function getData(list_distilleries) {
+    // create empty arrays to store the result of each component of the dictionary for the purpose of plots
     var dist_name = [];
     var dist_avg_rating = [];
     var dist_votes = [];
     var dist_whiskies = [];
-    // console.log(dist_name);
+
+    list_distilleries.forEach((distillery) => {
+        dist_name.push(distillery.Name);
+        dist_avg_rating.push(distillery.avg_rating);
+        dist_votes.push(distillery.num_votes);
+        dist_whiskies.push(distillery.num_whiskies);
+    })
+    // determine other characteristics of data
+    // number of distilleries:
+    dist_num = dist_name.length;
+    // Investigate use of Lodash in conjunction to require.js
+    // const _ = requirejs("lodash")
+    var sum_votes = _.sum(dist_votes);
+    var sum_whiskies = _.sum(dist_whiskies);
+
+    console.log(dist_name);
+    console.log(dist_avg_rating);
+    console.log(dist_votes);
+    console.log(dist_whiskies);
+    console.log(dist_num);
+    console.log(sum_votes);
+    console.log(sum_whiskies);
+
+    results = {
+        distillery_name: dist_name,
+        number_distilleries: dist_num,
+        total_votes: sum_votes,
+        number_whiskies: sum_whiskies,
+        distillery_avg_rating: dist_avg_rating,
+        distillery_votes: dist_votes,
+        distillery_num_whiskies: dist_whiskies
+    }
+
+    // charting elements
+    // barChart(results);
+    // bubbleChart(results);
+    // demographicTable(results);
 }
 
 init();
