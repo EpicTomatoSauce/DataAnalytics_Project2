@@ -45,21 +45,44 @@ function init() {
             dropdown.append('option').text(country).property('value', country.Country);
             // console.log(country.Country);
         })
-        var sampleCountry = data[0].Country;
-        // console.log(sampleCountry);
-        dataretrieval(sampleCountry);
+        var sampleCountry = data[11].Country;
+        console.log(sampleCountry);
+        buildList(sampleCountry);
     })
 }
 
-function dataretrieval(sampleCountry) {
+function buildList(sampleCountry) {
     d3.json('/raw_data').then((data) => {
-        var displayCountry = Object.values(sampleCountry)[0].filter((ctry) => ctry.Country === sampleCountry);
-        console.log(displayCountry);
-        // data.forEach((country) => {
-        //     var displayCountry = Object.values(country).filter((ctry) => ctry.Country === sampleCountry);
-        // })
+        var list_distilleries = [];
+        data.forEach((distillery) => {
+            if (distillery.Country === sampleCountry) {
+                list_distilleries.push(distillery);
+                // var distillery_array = distillery
+                // console.log(distillery_array);
+                // var dist_names = distillery.Name;
+                // var dist_avg_rating = distillery.avg_rating;
+                // var dist_votes = distillery.num_votes;
+                // var dist_whiskies = distillery.num_whiskies;
+                // console.log(dist_names);
+                // console.log(dist_avg_rating);
+                // console.log(dist_votes);
+                // console.log(dist_whiskies);
+                }
+        })
+        // successfully appended each dictionary to the list_distilleries
+        console.log(list_distilleries);
+        getData(list_distilleries);
     })
 }
+
+function getData(list_distilleries) {
+    var dist_name = [];
+    var dist_avg_rating = [];
+    var dist_votes = [];
+    var dist_whiskies = [];
+    // console.log(dist_name);
+}
+
 init();
 
 
