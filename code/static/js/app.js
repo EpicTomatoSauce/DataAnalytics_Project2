@@ -1,61 +1,22 @@
 let _ = window._;
-// Create a function to build and generate plots
-// ----------------------------------------------
-function loadData() {
-    d3.json("/raw_data_list").then((dataSet) => {
-        // console.log(dataSet)
-
-        $(document).ready(function() {
-            $('#rawData').DataTable( {
-                data: dataSet,
-                columns: [
-                    { title: "Index" },
-                    { title: "Name" },
-                    { title: "Country" },
-                    { title: "No. Whiskies" },
-                    { title: "No. Votes" },
-                    { title: "Rating" }
-                ]
-            });
-        });
-})
-
-}
-
-loadData()
-
-// create initialisation function
-// function init() {
-//     var dropdown = d3.select('#selDataset');
-//     d3.json('/raw_data').then((data) => {
-//         var countries = data.Country;
-//         console.log(countries);
-//         countries.forEach((country) => {
-//             dropdown.append('option').text(country).property('value',country.Country);
-
-//         var sampleCountry = data.Country[0];
-//         // dataretrieval(sampleCountry);
-//     })
-//         });
-// }
 
 function init() {
     // d3.select #selDataset in HTML then iterate through data and append Country to the dropdown.
     var dropdown = d3.select('#selDataset');
-    d3.json('/raw_data').then((data) => {
+    d3.json('/unique_countries').then((data) => {
         data.forEach((country) => {
             dropdown.append('option').text(country).property('value', country.Country);
-            // console.log(country.Country);
+            console.log(country.Country);
         })
         // For the initialisation demographic table, use index 11 which is Australia. Not too few / many data points.
-        var sampleCountry = data[11].Country;
+        var sampleCountry = data[0][0];
         console.log(sampleCountry);
         buildList(sampleCountry);
     })
 }
 
 function buildList(sampleCountry) {
-    d3.json('/raw_data').then((data) => {
+    d3.json('/top_rated').then((data) => {
         // empty array to store each dictionary which is matched by the if statement below
         var list_distilleries = [];
         data.forEach((distillery) => {
@@ -109,31 +70,103 @@ function getData(list_distilleries) {
         distillery_num_whiskies: dist_whiskies
     }
 
+    results_table = {
+        "Number of Distilleries": dist_num,
+        "Total Number of Votes": sum_votes,
+        "Total Number of Whiskies": sum_whiskies,
+    }
+
     // charting elements
-    // barChart(results);
-    // bubbleChart(results);
-    // demographicTable(results);
+    barChart(results);
+    bubbleChart(results);
+    whiskyTable(results_table);
 }
 
 init();
 
+// d3.selectAll("#selDataset").on("change", optionChanged);
 
-// // bubble chart
-// function bubblechart() {
-//     d3.json("/raw_data").then((bubbleData) => {
-//         bubbleData.forEach((country) => {
-//             var dist_name = country.Name;
-//             var dist_country = country.Country;
-//             var dist_avg_rating = country.avg_rating;
-//             var dist_num_votes = country.num_votes;
-//             var dist_num_whiskies = country.num_whiskies;
-//             // console.log(dist_name)
-//             // console.log(dist_country)
-//             // console.log(dist_avg_rating)
-//             // console.log(dist_num_votes)
-//             // console.log(dist_num_whiskies)
-//         })
-//     })
-// }
+// CREATE CHANGE CONDITION
+function optionChanged(sampleCountry) {
+    d3.selectAll('h5').remove();
+    // var sampleCountry = d3.select("#selDataset").node().value;
+    buildList(sampleCountry);
+};
 
-// bubblechart();
+// BUBBLE CHART
+function bubbleChart(results) {
+    // create variables which are called from the pull data above
+    var ratings = results.distillery_avg_rating;
+    var num_whiskies = results.distillery_num_whiskies;
+    var distillery_names = results.distillery_name;
+    var traceBUBBLE = {
+        x: num_whiskies,
+        y: ratings,
+        mode: 'markers',
+        marker: {
+            size: ratings,
+            color: num_whiskies,
+            // https://plotly.com/javascript/colorscales/
+            colorscale: 'Earth'
+        },
+        text: distillery_names
+    };
+    var dataBUBBLE = [traceBUBBLE];
+    var layoutBUBBLE = {
+        title: "<b>Test</b>",
+        xaxis: {title: "<b>Number of Whiskies</b>"},
+        yaxis: {title: "<b>Avg. Rating</b>"},
+        height: 500,
+        width: 1000
+    };
+    // PLOT BUBBLE CHART ON ID "BUBBLE"
+    Plotly.newPlot("bubble", dataBUBBLE, layoutBUBBLE);
+}
+
+// BAR CHART
+function barChart(results){
+    // create variables which are called from the pull data above
+    var distillery_names = results.distillery_name.slice(0,10).reverse();
+    var ratings = results.distillery_avg_rating.slice(0,10).reverse();
+    var traceBAR = {
+        x: ratings,
+        y: distillery_names,
+        text: distillery_names,
+        marker: {
+            color: 'blue'
+        },
+        type: 'bar',
+        orientation: 'h'
+    };
+    var dataBAR = [traceBAR];
+    var layoutBAR = {
+        title: "<b>Test</b>",
+        xaxis: {title: "<b>Avg. Rating</b>"},
+        yaxis: {title: "<b>Top Whiskies</b>"},
+        yAxis: {
+            tickmode: 'linear',
+        },
+        margin: {
+            l: 100,
+            r: 100,
+            t: 50,
+            b: 50
+        }
+    };
+    Plotly.newPlot('bar',dataBAR, layoutBAR);
+}
+
+// WHISKY INFO TABLE
+function whiskyTable(results_table) {
+    // console.log(sampleMetadata);
+      // Use d3 to select the required panel
+      var whiskyData = d3.select("#sample-metadata");
+  
+      // Clear the existing data in the html
+      whiskyData.html("");
+  
+      // Use `Object.entries` to add each key and value pair to the panelData
+      Object.entries(results_table).forEach(([key, value]) => {
+        whiskyData.append('h5').text(`${key}: ${value}`);
+      });
+};
