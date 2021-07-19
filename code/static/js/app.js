@@ -104,16 +104,20 @@ function bubbleChart(results) {
         y: ratings,
         mode: 'markers',
         marker: {
-            size: ratings,
-            color: num_whiskies,
+            size: 20,
+            color: ratings,
             // https://plotly.com/javascript/colorscales/
-            colorscale: 'Earth'
+            colorscale: 'Jet',
+            line: {
+                width: 1.5,
+                color: 'Black'
+            }
         },
         text: distillery_names
     };
     var dataBUBBLE = [traceBUBBLE];
     var layoutBUBBLE = {
-        title: "<b>Test</b>",
+        title: "<b>Number of Whiskies vs. Avg. Rating Per Country</b>",
         xaxis: {title: "<b>Number of Whiskies</b>"},
         yaxis: {title: "<b>Avg. Rating</b>"},
         height: 500,
@@ -133,19 +137,30 @@ function barChart(results){
         y: distillery_names,
         text: distillery_names,
         marker: {
-            color: 'blue'
+            color: ratings,
+            colorscale: 'Jet'
         },
         type: 'bar',
         orientation: 'h'
     };
     var dataBAR = [traceBAR];
     var layoutBAR = {
-        title: "<b>Test</b>",
-        xaxis: {title: "<b>Avg. Rating</b>"},
-        yaxis: {title: "<b>Top Whiskies</b>"},
-        yAxis: {
-            tickmode: 'linear',
+        title: "<b>Top 10 Whiskies Per Country by Avg. Rating</b>",
+        xaxis: {
+            automargin: true,
+            title: {
+                text: "<b>Avg. Rating</b>",
+                standoff: 5
+            }
         },
+        yaxis: {
+            automargin: true,
+            title: {
+                text: "<b>Top Whiskies</b>",
+                standoff: 5
+            }
+        },
+        yAxis: {tickmode: 'linear'},
         margin: {
             l: 100,
             r: 100,
@@ -167,6 +182,6 @@ function whiskyTable(results_table) {
   
       // Use `Object.entries` to add each key and value pair to the panelData
       Object.entries(results_table).forEach(([key, value]) => {
-        whiskyData.append('h5').text(`${key}: ${value}`);
+        whiskyData.append('p').text(`${key}: ${value}`);
       });
 };

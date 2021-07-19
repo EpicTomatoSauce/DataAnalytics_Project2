@@ -6,14 +6,48 @@ function map(){
                 borderWidth: 1,
                 map: 'custom/world'
             },
+            colors: [
+                'rgba(255,0,0,0.5)',
+                'rgba(255,128,0,0.5)',
+                'rgba(255,255,0,0.5)',
+                'rgba(0,255,0,0.5)',
+                'rgba(0,0,255,0.5)'],
             title: {
-                text: 'World Distilleries'
+                text: 'World Distilleries',
+                style: {
+                    color: 'black',
+                    fontWeight: 'bold'
+                }
             },
-            // subtitle: {
-            //     text: 'subtitle test'
-            // },
+            subtitle: {
+                text: 'Mapping the number of distilleries per country'
+            },
             legend: {
-                enabled: false
+                enabled: true,
+                title: {
+                    text: 'Number of Distilleries'
+                },
+                align: 'middle',
+                verticalAlign: 'top',
+                floating: true,
+                layout: 'vertical',
+                valueDecimals: 0
+            },
+            colorAxis: {
+                dataClasses: [{
+                    to: 20
+                } , {
+                    from: 20,
+                    to: 40
+                } , {
+                    from: 40,
+                    to: 60
+                } , {
+                    from: 60,
+                    to: 80
+                } , {
+                    from: 80              
+                }]
             },
             mapNavigation: {
                 enabled: true,
@@ -27,13 +61,13 @@ function map(){
                 enableMouseTracking: false
             }, {
                 type: 'mapbubble',
-                name: 'No. of Distilleries',
+                name: '<b>No. of Distilleries</b>',
                 joinBy: ['name', 'Country'],
                 data: data,
                 minSize: 4,
                 maxSize: '12%',
                 tooltip: {
-                    pointFormat: '{point.Country}: {point.z}'
+                    pointFormat: '<b>{point.Country}: </b> {point.z}'
                 }
             }]
         });
