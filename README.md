@@ -1,7 +1,7 @@
 # Whisky Discography
 Project #2 - Group 6
 
-![whisky10.png](Whisky_Discography/code/static/image/whisky10.png)
+![whisky10.png](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/whisky10.png)
 
 An in-depth analysis to the global whisky market using the Whisky Hunter API
 https://whiskyhunter.net/api/
