@@ -6,26 +6,21 @@ function map(){
                 borderWidth: 1,
                 map: 'custom/world'
             },
-​
             title: {
                 text: 'World Distilleries'
             },
-​
             // subtitle: {
             //     text: 'subtitle test'
             // },
-​
             legend: {
                 enabled: false
             },
-​
             mapNavigation: {
                 enabled: true,
                 buttonOptions: {
                     verticalAlign: 'bottom'
                 }
             },
-​
             series: [{
                 name: 'Countries',
                 color: '#E0E0E0',
@@ -44,5 +39,4 @@ function map(){
         });
     }); 
 }
-​
 map();
