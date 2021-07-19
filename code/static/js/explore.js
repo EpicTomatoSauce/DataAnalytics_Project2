@@ -1,7 +1,7 @@
 function map(){
     Highcharts.getJSON("/raw_data_grouped", function (data) {
         console.log(data);
-        Highcharts.mapChart('bubble', {
+        Highcharts.mapChart('map', {
             chart: {
                 borderWidth: 1,
                 map: 'custom/world'
