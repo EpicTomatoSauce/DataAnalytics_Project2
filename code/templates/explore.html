@@ -10,6 +10,7 @@
     <script src="https://code.highcharts.com/maps/modules/data.js"></script>
     <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
     <script src="../static/scripts/world.js"></script>
 </head>
 <body>
@@ -37,33 +38,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h1>Whisky Discography</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <h5>Distillery Country:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Whisky Information by Country</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div id="bar"></div>
-      </div>
-      <div class="col-md-5">
-        <div id="gauge"></div>
+        <h1>The Whisky Global Footprint</h1>
+        <p>A representation of the number of distilleries around the globe</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div id="map" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+        <div id="map" style="height: 600px; min-width: 300px; max-width: 800px; min-width: 400px; margin: 0 auto"></div>
       </div>
     </div>
   </div>

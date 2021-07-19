@@ -11,3 +11,7 @@
     font-weight: bold;
     padding: 5px;
 }
+
+.yaxis {
+    transform: translate(-10px,0px);
+}
