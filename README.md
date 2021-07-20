@@ -195,7 +195,7 @@ Below is an overview of each html page for our Whisky Discography webpage;
 
 ### Our Picks
 
-![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/ourpicks.png)
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/ourpicks.png)
 
 
 ## Analysis:
@@ -209,12 +209,12 @@ After diving into the world of Whisky we noted the following observations from o
 
 ## Deployment to Heroku:
 
-Our webpage has been successfully deployed in Heroku via the following link [whisky-discography](https://whisky-discography.herokuapp.com/).
+Our webpage has been successfully deployed in Heroku via the following [Whisky Discography](https://whisky-discography.herokuapp.com/) link. 
 
 
 ## Final Note:
 
-The Whisky Discography website can be used by Whisky beginners to connoisseurs to find their next whisky to sample, plan their next Whisky road trip, gift a bottle of whisky or whisky to simply enjoy.
+The Whisky Discography website can be used by Whisky beginners to connoisseurs to find their next whisky to sample, plan their next Whisky road trip, gift a bottle of whisky or to simply enjoy.
 
 
 ## Contributors
