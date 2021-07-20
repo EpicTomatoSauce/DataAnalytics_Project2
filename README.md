@@ -81,27 +81,68 @@ Whisky_Discography
 
 ## Extract:
 
-![chart](images/filenamehere.png)
+Using the Whisky Hunter API we fetched the json file from [Whisky Hunter](https://whiskyhunter.net/api/) and extracted the Whisky distillery information from the [Whisky Base](https://www.whiskybase.com/whiskies/distilleries) distillery table.
+
+### Whisky Hunter
+![extract01.PNG](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/whisky01.png)
+
+### Whisky Base
+![extract02.PNG](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/whisky01.png)
 
 ## Transform:
 
-![chart](images/filenamehere.png)
+In jupyter notebook applying the pandas library we read in the files, transformed the data and created dataframes sorted in ascending order based on the top rated whiskies, top voted and top whiskies in the world in preparation for pushing to a data base.
 
-## Load:
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/transform01.PNG)
 
-![chart](images/filenamehere.png)
+## Load - SQLite Database:
 
-## SQLite Database:
+Using the dataframes created in the jupyter notebook we applied the df.to_SQL to push the tables to the SQLite Database to store the raw data.
 
-![chart](images/filenamehere.png)
+ created in the juto push to and store raw data and sorted data in an SQLite Database [whisky_dist.db](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/whisky_dist.db).
+
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/sqlitedb01.PNG)
+
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/sqlitedb02.PNG)
 
 ## Visualisations:
 
-![chart](images/filenamehere.png)
+All visualisations were created and displayed on the html pages by using plotly, jquery and highchart via fetching the data from the whisky_dist.db raw_data, top_rated and the unique_countries tables.
+
+Below is an overview of each html page for our Whisky Discography webpage;
+
+### Index
+
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/index.PNG)
+
+### Statistics
+
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/statistics.PNG)
+
+### Explore
+
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/explore.PNG)
+
+### Distilleries
+
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/distilleries.PNG)
+
+### Our Picks
+
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/XXX.PNG)
 
 ## Analysis:
 
-![chart](images/filenamehere.png)
+After diving into the world of Whisky we noted the following observations from our dataset.
+
+* The highest rated Whisky was in Italy, however it only had one vote
+* United States had the most distilleries 
+* Scotland had the most reviewed distilleries  
+
+## Final Note:
+
+The Whisky Discography website can be used by Whisky beginners to connoisseurs to find their next whisky to sample. Essentially end users can use the website to plan their next Whisky road trip, gift or whisky to enjoy.
+
 
 ## Contributors
 - [@Alysha](https://github.com/alysnow)
