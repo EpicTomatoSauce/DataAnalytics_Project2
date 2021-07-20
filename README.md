@@ -64,6 +64,7 @@ Whisky_Discography
 ```
 # Dependencies and Setup
 
+
 ```
 
 ## Data Sources:
@@ -84,16 +85,16 @@ Whisky_Discography
 Using the Whisky Hunter API we fetched the json file from [Whisky Hunter](https://whiskyhunter.net/api/) and extracted the Whisky distillery information from the [Whisky Base](https://www.whiskybase.com/whiskies/distilleries) distillery table.
 
 ### Whisky Hunter
-![extract01.PNG](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/whisky01.png)
+![extract01.PNG](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/extract01.PNG)
 
 ### Whisky Base
-![extract02.PNG](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/whisky01.png)
+![extract02.PNG](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/extract02.PNG)
 
 ## Transform:
 
 In jupyter notebook applying the pandas library we read in the files, transformed the data and created dataframes sorted in ascending order based on the top rated whiskies, top voted and top whiskies in the world in preparation for pushing to a data base.
 
-![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/transform01.PNG)
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/transform01.PNG)
 
 ## Load - SQLite Database:
 
@@ -101,9 +102,9 @@ Using the dataframes created in the jupyter notebook we applied the df.to_SQL to
 
  created in the juto push to and store raw data and sorted data in an SQLite Database [whisky_dist.db](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/whisky_dist.db).
 
-![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/sqlitedb01.PNG)
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/sqlitedb01.PNG)
 
-![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/sqlitedb02.PNG)
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/sqlitedb02.PNG)
 
 ## Visualisations:
 
@@ -113,19 +114,19 @@ Below is an overview of each html page for our Whisky Discography webpage;
 
 ### Index
 
-![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/index.PNG)
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/index.PNG)
 
 ### Statistics
 
-![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/statistics.PNG)
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/statistics.PNG)
 
 ### Explore
 
-![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/explore.PNG)
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/explore.PNG)
 
 ### Distilleries
 
-![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/images/distilleries.PNG)
+![chart](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/distilleries.PNG)
 
 ### Our Picks
 
