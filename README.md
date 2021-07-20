@@ -1,10 +1,9 @@
 # Whisky Discography
 Project #2 - Group 6
 
-![whisky10.png](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/whisky10.png)
+![whisky01.png](https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/code/static/image/whisky01.png)
 
-An in-depth analysis to the global whisky market using the Whisky Hunter API
-https://whiskyhunter.net/api/
+An in-depth analysis to the global whisky market using the Whisky Hunter API.
 
 ## Assignment structure
 ```
@@ -17,25 +16,41 @@ Whisky_Discography
 |   |__ static/
 |      |__ css/
 |         |__ style.css
+|      |__ image/
+|         |__ alysha.png
+|         |__ craig.jpg
+|         |__ heriawan.jpg
+|         |__ matt.png
+|         |__ ms2.jpg
+|         |__ oban.jpg
+|         |__ steph.jpg
+|         |__ whisky01.png
+|         |__ whisky02.png
+|         |__ whisky03.png
+|         |__ whisky04.png
+|         |__ whisky05.png
+|         |__ whisky06.png
+|         |__ whisky07.png
+|         |__ whisky08.png
+|         |__ whisky09.png
+|         |__ ym1.jpg
 |      |__ js/
 |         |__ app.js
+|         |__ data.js
+|         |__ explore.js
+|      |__ scripts/
+|         |__ world.js
 |   |__ templates/
 |      |__ about_us.html
 |      |__ data.html
 |      |__ index.html
 |
 |__ data/
+|   |__ whisky_hunter_data.csv
 |   |__ whisky_hunter_data.json
 |
-|__ image/
-|   |__ WD1.PNG
-|   |__ WD2.PNG
-|   |__ WD3.PNG
-|   |__ WD4.PNG
-|   |__ WD5.PNG
-|   |__ WD6.PNG
-|
 |__ Project Proposal/
+|   |__ Project 2.docx
 |   |__ Wireframe Toolkit.pptx
 |
 |__ .gitignore 
@@ -61,7 +76,8 @@ Whisky_Discography
 
 |No|Source|Link|
 |-|-|-|
-|1|whisky_hunter_data.json|https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/data/whisky_hunter_data.json|
+|1|whisky_hunter_data.csv|https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/data/whisky_hunter_data.csv|
+|2|whisky_hunter_data.json|https://github.com/EpicTomatoSauce/Whisky_Discography/blob/main/data/whisky_hunter_data.json|
 
 ## Extract:
 
