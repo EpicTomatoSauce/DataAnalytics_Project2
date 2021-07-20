@@ -64,6 +64,40 @@ Whisky_Discography
 ```
 # Dependencies and Setup
 
+## JUPYTER NOTEBOOK
+* import pandas as pd
+* import json
+* from sqlalchemy import create_engine
+
+## JAVASCRIPT
+* <!-- install lodash -->
+* <!-- https://www.newline.co/@morfsys/you-should-start-using-lodash-in-2020-and-heres-why--792500b0 -->
+* <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+
+## HTML
+* <!DOCTYPE html>
+* <html lang="en">
+* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+### HIGHCHARTS - MAP
+* <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+* <script src="https://code.highcharts.com/maps/modules/data.js"></script>
+* <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+* <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+* <script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+
+### STATISTICS - PLOTLY
+* <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+### DISTILLERIES DATA TABLE - JQUERY & DATATABLES
+* <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+* <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+* <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+## HEROKU
+* pip install gunicorn
+* pip install flask
+* pip install flask-sqlalchemy
 
 ```
 
@@ -147,6 +181,6 @@ The Whisky Discography website can be used by Whisky beginners to connoisseurs t
 
 ## Contributors
 - [@Alysha](https://github.com/alysnow)
-- [@Heriawan](https://github.com/xxx)
+- [@Heriawan](https://github.com/xsbaggages/)
 - [@Steph](https://github.com/sSalvs)
 - [@Matt](https://github.com/EpicTomatoSauce)
