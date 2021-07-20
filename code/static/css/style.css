@@ -1,17 +1,32 @@
 .navbar {
-    background-color: white;
-    color: black;
+    background: linear-gradient(to right, #1d301c, #364832);
+    color: #1d301c;
 }
 
 .navbar-brand {
-    background: #4aaaa5;
-    color: white !important;
+    color: #1d301c !important;
     font-family: Arial, Helvetica, sans-serif;
     display: inline-block;
     font-weight: bold;
     padding: 5px;
 }
 
-.yaxis {
-    transform: translate(-10px,0px);
+.nav-link {
+    color: white !important;
 }
+
+.nav-link:hover {
+    color: gray !important;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #1d301c;
+    border-color: #1d301c;
+}
+
+.btn-primary:hover {
+    background-color: #3f4e3b;
+    border-color: #3f4e3b;
+}
+
