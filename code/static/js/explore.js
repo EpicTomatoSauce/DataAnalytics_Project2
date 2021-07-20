@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------
+// Create a function to build and generate Map for the Explore HTML
+// ----------------------------------------------------------------
 function map(){
     Highcharts.getJSON("/raw_data_grouped", function (data) {
         console.log(data);

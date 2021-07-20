@@ -1,5 +1,6 @@
-// Create a function to build and generate plots
-// ----------------------------------------------
+// ----------------------------------------------------------------
+// Create a function to build and generate the data table for the Distilleries HTML
+// ----------------------------------------------------------------
 function loadData() {
     d3.json("/raw_data_list").then((dataSet) => {
         // console.log(dataSet)

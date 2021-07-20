@@ -1,3 +1,7 @@
+// ----------------------------------------------------------------
+// Create functions to build and generate the visualisations on the statistics HTML
+// ----------------------------------------------------------------
+
 let _ = window._;
 
 function init() {
